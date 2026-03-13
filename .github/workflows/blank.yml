@@ -22,7 +22,7 @@ jobs:
 
       - name: Build mod
         run: |
-          cd ZepkarHUDTweaker-v2-fixed-source-NEW
+          cd ZepkarHUDTweaker-v2-fixed
           chmod +x gradlew
           ./gradlew build --stacktrace
 
@@ -30,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ZepkarHUDTweaker
-          path: ZepkarHUDTweaker-v2-fixed-source-NEW/build/libs/*.jar
+          path: ZepkarHUDTweaker-v2-fixed/build/libs/*.jar
