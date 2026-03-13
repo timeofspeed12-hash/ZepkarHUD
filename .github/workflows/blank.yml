@@ -24,3 +24,10 @@ jobs:
         run: |
           cd ZepkarHUDTweaker-v2-fixed
           chmod +x gradlew
+          ./gradlew build
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod
+          path: ZepkarHUDTweaker-v2-fixed/build/libs/*.jar
