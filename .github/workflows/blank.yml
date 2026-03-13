@@ -11,29 +11,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: List files before unzip
-        run: ls -la
-
-      - name: Unzip source
-        run: unzip -o ZepkarHUDTweaker-v2-fixed-source-NEW.zip
-
-      - name: List files after unzip
-        run: ls -la && find . -maxdepth 2 -type f | sort
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
 
+      - name: Unzip source
+        run: unzip -o ZepkarHUDTweaker-v2-fixed-source-NEW.zip
+
       - name: Build mod
         run: |
-          cd ZepkarHUDTweaker-v2-fixed
-          if [ -f gradlew ]; then chmod +x gradlew; fi
+          cd ZepkarHUDTweaker-v2-fixed-source-NEW
+          chmod +x gradlew
           ./gradlew build --stacktrace
 
       - name: Upload jar
         uses: actions/upload-artifact@v4
         with:
-          name: mod
-          path: ZepkarHUDTweaker-v2-fixed/build/libs/*.jar
+          name: ZepkarHUDTweaker
+          path: ZepkarHUDTweaker-v2-fixed-source-NEW/build/libs/*.jar
